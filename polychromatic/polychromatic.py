@@ -1,7 +1,7 @@
 from PIL import Image, ImageDraw
 from typing import Tuple, List
 from math import floor, ceil, sqrt
-
+import os
 
 Color = Tuple[int, int, int]
 
@@ -18,6 +18,8 @@ def decompose(n: int) -> Tuple[int, int]:
 
 def encrypt_one(char: str, triplet: str) -> Color:
 
+    # TODO
+    
     r = ord(char) + ord(triplet[0]) - 64
     g = ord(char) + ord(triplet[1]) - 64
     b = ord(char) + ord(triplet[2]) - 64
@@ -84,3 +86,14 @@ def de_encrypt(encrypted: Image, key: str) -> str:
             i += 1
 
     return res
+
+
+def save_image(image: Image, path: str = "", file_name: str = "encrypted.png") -> None:
+    
+    if path == "":
+        path = os.getcwd()
+
+    image.save(path + os.path.sep + file_name, "PNG")
+
+
+encrypt("Acafafsf", "fawagdxc").show()
