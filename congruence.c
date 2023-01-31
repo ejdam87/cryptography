@@ -2,6 +2,25 @@
 #include <stdlib.h>
 #include "congruence.h"
 
+congruence* create_congruence( int a, int b, int m )
+{
+    congruence* res = malloc( sizeof( congruence ) );
+    res -> a = a;
+    res -> b = b;
+    res -> m = m;
+    return res;
+}
+
+int positive_modulo( int a, int m )
+{
+    int res = a % m;
+    if ( res < 0 )
+    {
+        return res + m;
+    }
+    return m;
+}
+
 void print_congruence( congruence* cong )
 {
     printf( "%ix ≡ %i ( mod %i )\n", cong -> a, cong -> b, cong -> m );
@@ -14,24 +33,6 @@ void swap( int* a, int *b )
     *b = temp;
 }
 
-int max( int a, int b )
-{
-    if ( a > b )
-    {
-        return a;
-    }
-    return b;
-}
-
-int min( int a, int b )
-{
-    if ( a < b )
-    {
-        return a;
-    }
-    return b;
-}
-
 int solve_congurence( congruence* cong )
 {
     /* Using euclid algorithm */
@@ -39,10 +40,12 @@ int solve_congurence( congruence* cong )
     int c = cong -> m;
     int d = cong -> m;
 
+    int times;
     while ( cong -> a != 1 )
     {
-        c %= cong -> a;
-        d %= cong -> b;
+        times = c / cong -> a;
+        c -= times * ( cong -> a );
+        d -= times * ( cong -> b );
 
         swap( &(cong -> a), &c );
         swap( &(cong -> b), &d );
@@ -53,22 +56,25 @@ int solve_congurence( congruence* cong )
         }
     }
 
+    cong -> a = positive_modulo( cong -> a, cong -> m );
+    cong -> b = positive_modulo( cong -> b, cong -> m );
     return cong -> b;
 
 }
 
+
+int inverse_modulo( int x, int m )
+{
+    congruence* cong = create_congruence( x, 1, m );
+    int res = solve_congurence( cong );
+    free( cong );
+    return res;
+}
+
+
 int main()
 {
 
-    congruence* cong = malloc( sizeof( congruence ) );
-    cong -> a = 13;
-    cong -> b = 23;
-    cong -> m = 6;
-
-    print_congruence( cong );
-
-    solve_congurence( cong );
-
-    print_congruence( cong );
+    printf( "%i", inverse_modulo(13, 6) );
 
 }
