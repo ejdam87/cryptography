@@ -10,7 +10,7 @@ typedef struct congruence
     int m;
 } congruence;
 
-void print_congruence( congruence* );
-int solve_congurence( congruence* );
+void print_congruence( congruence* );   // prints given congruence to stdout
+int solve_congurence( congruence* );    // returns value of x ( also modifies given congruence )
 
 #endif //CYPHERS_CONGRUENCE_H
