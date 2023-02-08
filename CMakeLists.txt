@@ -3,4 +3,4 @@ project(cyphers C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable( cyphers pow.c pow.h congruence.c congruence.h )
+add_executable( cyphers rsa.c rsa.h pow.c pow.h congruence.c congruence.h )

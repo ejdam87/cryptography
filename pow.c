@@ -1,6 +1,6 @@
 #include "pow.h"
 
-int binpow_iter( int num, unsigned int exp )
+int binpow_iter( int num, unsigned exp )
 {
     int res = 1;
 
@@ -18,7 +18,7 @@ int binpow_iter( int num, unsigned int exp )
     return res;
 }
 
-int binpow_rec( int num, unsigned int exp )
+int binpow_rec( int num, unsigned exp )
 {
     int subres;
     if ( exp == 0 )
@@ -44,7 +44,7 @@ int binpow_rec( int num, unsigned int exp )
     return -1;
 }
 
-int modpow( int num, unsigned int exp, int mod )
+int modpow( int num, unsigned exp, int mod )
 {
     int res = 1;
     num %= mod;

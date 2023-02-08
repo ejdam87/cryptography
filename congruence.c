@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "congruence.h"
 
 congruence* create_congruence( int a, int b, int m )
@@ -71,10 +72,40 @@ int inverse_modulo( int x, int m )
     return res;
 }
 
-
-int main()
+bool are_indisputable( unsigned a, unsigned b )
 {
+    unsigned min;
+    if ( a < b )
+    {
+        min = a;
+    }
+    else
+    {
+        min = b;
+    }
 
-    printf( "%i", inverse_modulo(13, 6) );
+    for ( int i = 2; i <= min; i++ )
+    {
+        if ( a % i == 0 && b % i == 0 )
+        {
+            return false;
+        }
+    }
+    return true;
 
+}
+
+unsigned phi( unsigned n )
+{
+    unsigned res = 0;
+
+    for ( unsigned i = 1; i < n; i++ )
+    {
+        if ( are_indisputable( n, i ) )
+        {
+            res++;
+        }
+    }
+
+    return res;
 }
