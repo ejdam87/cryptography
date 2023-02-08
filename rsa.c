@@ -1,9 +1,5 @@
 #include "rsa.h"
 #include "pow.h"
-#include "congruence.h"
-
-#include <stdlib.h>
-#include <stdio.h>
 
 int encrypt( int msg, public_key* pk )
 {

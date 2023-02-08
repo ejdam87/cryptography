@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "congruence.h"
+#include "modular.h"
 
 congruence* create_congruence( int a, int b, int m )
 {
@@ -19,7 +19,7 @@ int positive_modulo( int a, int m )
     {
         return res + m;
     }
-    return m;
+    return a;
 }
 
 void print_congruence( congruence* cong )

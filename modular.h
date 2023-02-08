@@ -1,6 +1,6 @@
 
-#ifndef CYPHERS_CONGRUENCE_H
-#define CYPHERS_CONGRUENCE_H
+#ifndef CIPHER_CONGRUENCE_H
+#define CIPHER_CONGRUENCE_H
 
 // Linear-congruence ( ax ≡ b ( mod m ) )
 typedef struct congruence

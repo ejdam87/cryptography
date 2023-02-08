@@ -1,6 +1,6 @@
 
-#ifndef CYPHERS_RSA_H
-#define CYPHERS_RSA_H
+#ifndef CIPHER_RSA_H
+#define CIPHER_RSA_H
 
 /*
  * e - exponent
