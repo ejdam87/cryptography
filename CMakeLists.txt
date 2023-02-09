@@ -3,4 +3,4 @@ project(cyphers C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable( cyphers el_gamal.c el_gamal.h pow.c pow.h modular.c modular.h)
+add_executable( cyphers pow.c pow.h modular.c modular.h rabin.c rabin.h)
