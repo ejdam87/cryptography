@@ -19,8 +19,10 @@ int solve_congurence( congruence* );                // returns value of x ( also
 int solve_system( congruence*, congruence* );       // returns solution of system of 2 congruences ( also modifes them )
 
 int gcd( int, int );                                // greatest common divisor
-bool are_indisputable( int, int );                  // self-explanatory
+bool are_relatively_prime(int, int );               // self-explanatory
 int inverse_modulo( int, int );                     // Returns inverse element to given number ( modulo is also given )
-unsigned phi( unsigned );                           // computes euler totient function
+unsigned phi( int );                                // computes euler totient function
+int order_of( int, int );                           // returns order of number ( modulo m )
+int primitive_root( int );                          // returns smallest primitive root ( modulo m )
 
 #endif

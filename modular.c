@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "pow.h"
 #include "modular.h"
 
 #define NO_SOLUTION -1
@@ -125,22 +127,55 @@ int gcd( int a, int b )
     return gcd( b, a % b );
 }
 
-bool are_indisputable( int a, int b )
+bool are_relatively_prime(int a, int b )
 {
-    return gcd( a, b ) > 1;
+    return gcd( a, b ) == 1;
 }
 
-unsigned phi( unsigned n )
+unsigned phi( int n )
 {
     unsigned res = 0;
 
     for ( int i = 1; i < n; i++ )
     {
-        if ( are_indisputable( (int) n, i ) )
+        if ( are_relatively_prime( (int) n, i ) )
         {
             res++;
         }
     }
 
     return res;
+}
+
+int order_of( int n, int m )
+{
+    for ( int i = 1; i <= phi( m ); i++ )
+    {
+        if ( modpow( n, i, m ) == 1 )
+        {
+            return i;
+        }
+    }
+
+    return -1;  // Not possible
+
+}
+
+int primitive_root( int p )
+{
+
+    int g = 2;
+
+    while ( true )
+    {
+
+        if (order_of( g, p ) == phi( p ) )
+        {
+            return g;
+        }
+
+        g++;
+
+    }
+
 }
