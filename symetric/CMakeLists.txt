@@ -6,6 +6,6 @@ set(CMAKE_C_STANDARD 11)
 include_directories(.)
 
 add_executable(symetric
-        ceasar.c
-        ceasar.h
-        alphabet.h)
+        caesar.c
+        caesar.h
+        alphabet.h vigenere.c vigenere.h)
