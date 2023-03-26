@@ -4,11 +4,11 @@
 # Unignore all dirs
 !*/
 
-# Unignore .txt, .c, .h
 !*.txt
 !*.TXT
 !*.c
 !*.h
+!*.py
 
 # Unignore markup
 !*.ad
